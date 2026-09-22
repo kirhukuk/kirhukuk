@@ -1,0 +1,1220 @@
+import {
+  SiteSettings,
+  MenuItem,
+  PracticeArea,
+  TeamMember,
+  Article,
+  FaqItem,
+  Announcement,
+  GalleryItem,
+  ContactMessage,
+  CustomPage,
+  HomeSection,
+  User,
+  AuditLog,
+  MediaItem
+} from '../types';
+
+export const initialSiteSettings: SiteSettings = {
+  siteName: 'KIR HUKUK',
+  slogan: 'Hukukun Gücü, Haklarınızın Güvencesi',
+  heroEyebrow: 'KIR HUKUK OFİSİ',
+  heroTitle: 'Hukuki Süreçlerinizde',
+  heroTitleHighlight: 'Güvenilir',
+  heroTitleSuffix: 'Çözüm Ortağınız',
+  heroDescription: 'Bursa, İstanbul ve Türkiye geneli avukat desteği için KIR Hukuk Ofisi yanınızda. Boşanma, ceza, iş, şirketler ve gayrimenkul davalarında hızlı, güvenilir ve sonuç odaklı çözümler.',
+  heroImageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85',
+  heroImageAlt: 'KIR Hukuk Bürosu Modern Genel Merkez & Hukuk Kulesi',
+  heroPillTeamText: 'Ekibimiz',
+  heroPillTeamActive: true,
+  heroPillArticlesText: 'Makaleler',
+  heroPillArticlesActive: true,
+  heroPillToolsText: 'Araçlar',
+  heroPillToolsActive: true,
+  heroButtonPrimaryText: 'Hukuki Destek Alın',
+  heroButtonSecondaryText: 'İletişime Geçin',
+  showHeroStats: true,
+  heroStats: [
+    { id: 'stat-1', value: '20+', label: 'Yıllık Mesleki Tecrübe', highlight: false, isActive: true },
+    { id: 'stat-2', value: '3.500+', label: 'Tamamlanan Dava & Dosya', highlight: false, isActive: true },
+    { id: 'stat-3', value: '11', label: 'Hukuki Uzmanlık Alanı', highlight: false, isActive: true },
+    { id: 'stat-4', value: '%98', label: 'Müvekkil Memnuniyeti', highlight: true, isActive: true }
+  ],
+  logoText: 'KIR HUKUK OFİSİ',
+  logoSubtext: 'HUKUK & DANIŞMANLIK OFİSİ',
+  logoImageUrl: '',
+  logoAltText: 'KIR Hukuk Ofisi - Hukuk ve Danışmanlık Hizmetleri',
+  phone: '+90 (212) 450 16 16',
+  phoneRaw: '+902124501616',
+  whatsappNumber: '+905324501616',
+  whatsappDefaultMessage: 'Merhaba, KIR HUKUK ile hukuki danışmanlık konusunda iletişime geçmek istiyorum.',
+  email: 'info@kirhukuk.av.tr',
+  address: 'Levent Mah. Büyükdere Cad. No: 184 K: 12 Şişli / İstanbul',
+  workingHours: 'Pazartesi - Cuma: 09:00 - 18:30 | Cumartesi: 09:30 - 13:00',
+  mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.277717469796!2d29.0112!3d41.0772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab65d6c8b983d%3A0x2db4e81561726a42!2sLevent%2C%20B%C3%BCy%C3%BCkdere%20Cd.%2C%20%C5%9Ei%C5%9Fli%2F%C4%B0stanbul!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str',
+  googleMapsDirectionsUrl: 'https://maps.google.com/?q=Levent+Buyukdere+Caddesi+Istanbul',
+  footerCorporateText: 'KIR HUKUK; tecrübeli avukat kadrosu ile müvekkillerine ceza, şirketler, ticaret, iş, gayrimenkul ve aile hukuku başta olmak üzere geniş bir yelpazede yüksek standartlı hukuki danışmanlık ve temsil hizmeti vermektedir.',
+  copyrightText: '© 2026 KIR HUKUK. Tüm hakları saklıdır.',
+  legalDisclaimerText: 'Bu internet sitesinde yer alan tüm bilgi, makale ve içerikler yalnızca bilgilendirme amaçlı olup Türkiye Barolar Birliği meslek kurallarına uygun olarak hazırlanmıştır. İçerikler hukuki mütalaa veya avukat-müvekkil ilişkisi oluşturmaz.',
+  socialLinks: [
+    { platform: 'LinkedIn', url: 'https://linkedin.com/company/kir-hukuk', isActive: true, order: 1 },
+    { platform: 'X', url: 'https://x.com/kirhukuk', isActive: true, order: 2 },
+    { platform: 'Instagram', url: 'https://instagram.com/kirhukuk', isActive: true, order: 3 },
+    { platform: 'Facebook', url: 'https://facebook.com/kirhukuk', isActive: true, order: 4 },
+    { platform: 'YouTube', url: 'https://youtube.com/@kirhukuk', isActive: true, order: 5 }
+  ],
+  modules: {
+    team: true,
+    articles: true,
+    gallery: true,
+    announcements: true,
+    faq: true,
+    whatsapp: true,
+    socialMedia: true,
+    contactForm: true,
+    popup: true,
+    quickContactBar: true
+  },
+  popup: {
+    isEnabled: false,
+    title: 'Hukuki Danışmanlık ve Randevu',
+    message: 'KIR HUKUK olarak bireysel ve kurumsal dava ve danışmanlık süreçlerinizde randevu alarak doğrudan ofisimizde veya online olarak görüşebilirsiniz.',
+    buttonText: 'Hemen İletişime Geçin',
+    buttonUrl: '/iletisim',
+    showOnlyOnHome: true,
+    frequency: 'once_per_session'
+  },
+  themeColors: {
+    primaryBg: '#0B132B',
+    cardBg: '#2B3E60',
+    cardAltBg: '#304368',
+    textMain: '#F8FAFC',
+    textMuted: '#94A3B8',
+    accentGold: '#C5A880',
+    borderSubtle: 'rgba(255, 255, 255, 0.08)'
+  },
+  typography: {
+    headingFont: "'Plus Jakarta Sans', sans-serif",
+    bodyFont: "'Inter', sans-serif",
+    menuFontSize: '15px',
+    buttonFontSize: '15px'
+  },
+  seo: {
+    defaultTitle: 'KIR HUKUK | Prestijli ve Güvenilir Hukuk Bürosu',
+    defaultDescription: 'KIR HUKUK - Ceza, Ticaret, İş, Gayrimenkul, Aile ve Şirketler Hukuku alanında profesyonel avukatlık ve hukuki danışmanlık hizmetleri.',
+    canonicalUrl: 'https://kirhukuk.av.tr',
+    ogImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+    robots: 'index, follow'
+  }
+};
+
+export const initialMenuItems: MenuItem[] = [
+  { id: 'm-1', title: 'Ana Sayfa', url: '/', type: 'page', isActive: true, order: 1 },
+  {
+    id: 'm-2',
+    title: 'Hakkımızda',
+    url: '/hakkimizda',
+    type: 'page',
+    isActive: true,
+    order: 2,
+    children: [
+      { id: 'sub-about-1', title: 'Hakkımızda & Vizyonumuz', url: '/hakkimizda', type: 'page', isActive: true, order: 1, parentId: 'm-2' },
+      {
+        id: 'sub-bursa',
+        title: 'Bursa',
+        url: '/sayfa/bursa',
+        type: 'page',
+        isActive: true,
+        order: 2,
+        parentId: 'm-2',
+        children: [
+          { id: 'sub-bursa-nilufer', title: 'Nilüfer', url: '/sayfa/nilufer', type: 'page', isActive: true, order: 1, parentId: 'sub-bursa' },
+          { id: 'sub-bursa-osmangazi', title: 'Osmangazi', url: '/sayfa/osmangazi', type: 'page', isActive: true, order: 2, parentId: 'sub-bursa' }
+        ]
+      }
+    ]
+  },
+  { id: 'm-3', title: 'Ekibimiz', url: '/ekibimiz', type: 'page', isActive: true, order: 3 },
+  {
+    id: 'm-4',
+    title: 'Faaliyet Alanları',
+    url: '/calisma-alanlarimiz',
+    type: 'page',
+    isActive: true,
+    order: 4,
+    children: [
+      { id: 'sub-1', title: 'Ceza Hukuku', url: '/calisma-alanlarimiz/ceza-hukuku', type: 'page', isActive: true, order: 1, parentId: 'm-4' },
+      { id: 'sub-2', title: 'Aile ve Boşanma Hukuku', url: '/calisma-alanlarimiz/aile-ve-bosanma-hukuku', type: 'page', isActive: true, order: 2, parentId: 'm-4' },
+      { id: 'sub-3', title: 'İş Hukuku', url: '/calisma-alanlarimiz/is-hukuku', type: 'page', isActive: true, order: 3, parentId: 'm-4' },
+      { id: 'sub-4', title: 'Ticaret ve Şirketler Hukuku', url: '/calisma-alanlarimiz/ticaret-ve-sirketler-hukuku', type: 'page', isActive: true, order: 4, parentId: 'm-4' },
+      { id: 'sub-5', title: 'Gayrimenkul Hukuku', url: '/calisma-alanlarimiz/gayrimenkul-hukuku', type: 'page', isActive: true, order: 5, parentId: 'm-4' },
+      { id: 'sub-6', title: 'Miras Hukuku', url: '/calisma-alanlarimiz/miras-hukuku', type: 'page', isActive: true, order: 6, parentId: 'm-4' },
+      { id: 'sub-7', title: 'İcra ve İflas Hukuku', url: '/calisma-alanlarimiz/icra-ve-iflas-hukuku', type: 'page', isActive: true, order: 7, parentId: 'm-4' },
+      { id: 'sub-8', title: 'Tazminat Hukuku', url: '/calisma-alanlarimiz/tazminat-hukuku', type: 'page', isActive: true, order: 8, parentId: 'm-4' }
+    ]
+  },
+  { id: 'm-5', title: 'Araçlar', url: '#araclar', type: 'page', isActive: true, order: 5 },
+  { id: 'm-6', title: 'Dilekçeler', url: '#dilekceler', type: 'page', isActive: true, order: 6 },
+  {
+    id: 'm-7',
+    title: 'Makaleler',
+    url: '/makaleler',
+    type: 'page',
+    isActive: true,
+    order: 7,
+    children: [
+      { id: 'sub-info-1', title: 'Hukuki Makaleler & İncelemeler', url: '/makaleler', type: 'page', isActive: true, order: 1, parentId: 'm-7' },
+      { id: 'sub-info-2', title: 'Sıkça Sorulan Sorular', url: '/sss', type: 'page', isActive: true, order: 2, parentId: 'm-7' }
+    ]
+  },
+  { id: 'm-8', title: 'İletişim', url: '/iletisim', type: 'page', isActive: true, order: 8 }
+];
+
+export const initialPracticeAreas: PracticeArea[] = [
+  {
+    id: 'pa-1',
+    slug: 'ceza-hukuku',
+    title: 'Ceza Hukuku',
+    shortDesc: 'Soruşturma ve kovuşturma aşamalarında şüpheli, sanık müdafiliği ve müşteki vekilliği hizmetleri.',
+    fullDesc: 'KIR HUKUK, ceza yargılamasının tüm aşamalarında şüpheli veya sanık müdafiliği ile mağdur ve katılan vekilliği konularında titizlikle hizmet verir. Kolluk ifadesinden sulh ceza hakimliği tutuklama incelemelerine, asliye ceza ve ağır ceza mahkemelerindeki yargılamalardan istinaf ve Yargıtay kanun yollarına kadar her adımda anayasal hakların ve adil yargılanma hakkının teminat altına alınması hedeflenir.',
+    icon: 'Scale',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Ağır Ceza Mahkemelerinde Sanık Müdafiliği ve Mağdur Vekilliği',
+      'Gözaltı, Arama, Elkoyma ve Tutukluluğa İtiraz Süreçleri',
+      'Ekonomik ve Bilişim Suçları Soruşturmaları',
+      'Memur Suçları ve Görevi Kötüye Kullanma Davaları',
+      'İstinaf, Temyiz (Yargıtay) ve Anayasa Mahkemesi Bireysel Başvuruları'
+    ],
+    order: 1,
+    isActive: true
+  },
+  {
+    id: 'pa-2',
+    slug: 'aile-ve-bosanma-hukuku',
+    title: 'Aile ve Boşanma Hukuku',
+    shortDesc: 'Anlaşmalı ve çekişmeli boşanma, nafaka, velayet ve edinilmiş mallara katılma davalarında uzman destek.',
+    fullDesc: 'Aile kurumunun hassasiyetinin bilinciyle, anlaşmalı ve çekişmeli boşanma davaları, velayetin değiştirilmesi, maddi ve manevi tazminat talepleri, iştirak ve yoksulluk nafakası ile evlilik birliğinde edinilen malların tasfiyesi davalarında müvekkillerimizin haklarını en üst seviyede koruyoruz.',
+    icon: 'HeartHandshake',
+    image: 'https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Anlaşmalı Boşanma Protokollerinin Hazırlanması ve Takibi',
+      'Çekişmeli Boşanma Davaları ve Delil Toplama Stratejisi',
+      'Velayet, Kişisel İlişki Kurulması ve Çocuk Hakları Korunması',
+      'Katkı Payı, Değer Artış Payı ve Mal Rejimi Tasfiyesi Davaları',
+      '6284 Sayılı Kanun Uyarınca Tedbir ve Koruma Kararları Alınması'
+    ],
+    order: 2,
+    isActive: true
+  },
+  {
+    id: 'pa-3',
+    slug: 'is-hukuku',
+    title: 'İş Hukuku',
+    shortDesc: 'İşe iade, kıdem ve ihbar tazminatı, iş kazaları ve arabuluculuk süreçlerinde profesyonel temsil.',
+    fullDesc: 'Hem işçi hem de işveren müvekkillerimize, 4857 sayılı İş Kanunu ve ilgili mevzuat uyarınca doğan tüm uyuşmazlıklarda stratejik danışmanlık sunuyoruz. Zorunlu arabuluculuk müzakerelerinden dava süreçlerinin sonuna kadar mevzuat değişikliklerini yakından takip ederek etkin çözümler üretiyoruz.',
+    icon: 'Briefcase',
+    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Kıdem, İhbar, Kötüniyet ve Fazla Mesai Alacağı Davaları',
+      'İşe İade Davaları ve İcra Edilebilirlik Denetimi',
+      'İş Kazası Kaynaklı Maddi-Manevi Tazminat Davaları',
+      'İş Sözleşmeleri ve Şirket İç Yönetmeliklerinin Hazırlanması',
+      'Dava Şartı Arabuluculuk Süreçlerinin Yürütülmesi'
+    ],
+    order: 3,
+    isActive: true
+  },
+  {
+    id: 'pa-4',
+    slug: 'ticaret-ve-sirketler-hukuku',
+    title: 'Ticaret ve Şirketler Hukuku',
+    shortDesc: 'Şirket kuruluşu, birleşme ve devralmalar, ticari sözleşmeler ve genel kurul danışmanlığı.',
+    fullDesc: 'Yerli ve yabancı sermayeli şirketlere kuruluş anından itibaren kurumsal yönetim, pay devirleri, birleşme ve bölünmeler, sermaye artırımı/azaltımı ve ticari alacakların tahsili hususlarında tam teşekküllü kurumsal danışmanlık sunulmaktadır.',
+    icon: 'Building2',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Anonim ve Limited Şirket Kuruluşları, Esas Sözleşme Tadilleri',
+      'Hissedarlar Sözleşmesi (SHA) ve Pay Devir Süreçleri',
+      'Birleşme, Bölünme ve Tür Değiştirme Danışmanlığı',
+      'Ticari Davalar ve Haksız Rekabet Uyuşmazlıkları',
+      'Yönetim Kurulu ve Genel Kurul Süreç Yönetimi'
+    ],
+    order: 4,
+    isActive: true
+  },
+  {
+    id: 'pa-5',
+    slug: 'gayrimenkul-hukuku',
+    title: 'Gayrimenkul Hukuku',
+    shortDesc: 'Tapu iptal ve tescil, kamulaştırma, kira tahliye ve kentsel dönüşüm uyuşmazlıkları.',
+    fullDesc: 'Taşınmaz malların alım-satımı, tapu kaydının düzeltilmesi, müdahalenin men-i, şufa (önalım) hakları, tahliye davaları ve kat karşılığı inşaat sözleşmelerinden kaynaklanan hukuki uyuşmazlıklarda derin bir uzmanlık sunuyoruz.',
+    icon: 'Home',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Tapu İptal ve Tescil (Muris Muvazaası vb.) Davaları',
+      'Kira Tespiti ve Tahliye Davaları (Kiracı & Ev Sahibi Hakları)',
+      'Kat Karşılığı İnşaat Sözleşmeleri ve Eser Sözleşmesi Davaları',
+      'Kamulaştırmasız El Atma ve Bedel Artırım Davaları',
+      'İzale-i Şüyu (Ortaklığın Giderilmesi) Davaları'
+    ],
+    order: 5,
+    isActive: true
+  },
+  {
+    id: 'pa-6',
+    slug: 'miras-hukuku',
+    title: 'Miras Hukuku',
+    shortDesc: 'Vasiyetname tanzimi, mirasın reddi, tenkis ve muris muvazaası davalarında danışmanlık.',
+    fullDesc: 'Miras bırakanın tasarruflarının hukuka uygunluğu, miras taksim sözleşmelerinin düzenlenmesi, saklı pay tecavüzlerine karşı tenkis davaları ve terekenin tespiti davalarında titiz bir süreç yönetimi yürütüyoruz.',
+    icon: 'FileText',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Vasiyetname ve Mirasçı Atama Sözleşmelerinin Hazırlanması',
+      'Mirasın Reddi (Hükmen ve Gerçek Red) Süreçleri',
+      'Tenkis ve Denkleştirme Davaları',
+      'Muris Muvazaası Nedeniyle Tapu İptal Davaları',
+      'Veraset İlamı ve Terekenin Resmi Tasfiyesi'
+    ],
+    order: 6,
+    isActive: true
+  },
+  {
+    id: 'pa-7',
+    slug: 'icra-ve-iflas-hukuku',
+    title: 'İcra ve İflas Hukuku',
+    shortDesc: 'İlamsız ve ilamlı icra takipleri, menfi tespit, konkordato ve alacak tahsili yönetimi.',
+    fullDesc: 'Bireysel ve kurumsal alacakların yasal yollarla en hızlı ve masrafsız biçimde tahsili, haciz işlemleri, rehnin paraya çevrilmesi, borca itiraz ve konkordato süreçlerinin takibinde sonuç odaklı ve proaktif bir yaklaşım sergiliyoruz.',
+    icon: 'Gavel',
+    image: 'https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Kambiyo Senetlerine (Çek, Bono, Poliçe) Özgü Takipler',
+      'İtirazın İptali ve İtirazın Kaldırılması Davaları',
+      'Menfi Tespit ve İstirdat Davaları',
+      'İflas ve Konkordato Başvuru ve Denetim Süreçleri',
+      'İhtiyati Haciz Kararı Alınması ve Uygulanması'
+    ],
+    order: 7,
+    isActive: true
+  },
+  {
+    id: 'pa-8',
+    slug: 'tazminat-hukuku',
+    title: 'Tazminat Hukuku',
+    shortDesc: 'Trafik kazaları, malpraktis (tıbbi hata) ve haksız fiilden doğan maddi ve manevi zararların tazmini.',
+    fullDesc: 'Haksız fiil, sözleşmeye aykırılık, trafik kazaları veya hekim hatası (tıbbi malpraktis) sonucu meydana gelen cismani ve maddi zararların tazmininde aktüerya hesaplamaları ve uzman mütalaaları desteğiyle etkin hak arama hizmeti sunuyoruz.',
+    icon: 'ShieldAlert',
+    image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Ölümlü ve Yaralanmalı Trafik Kazası Tazminat Davaları',
+      'Doktor ve Hastane Kaynaklı Tıbbi Hata (Malpraktis) Davaları',
+      'Destekten Yoksun Kalma ve İş Gücü Kaybı Tazminatları',
+      'Kişilik Haklarına Saldırı Nedeniyle Manevi Tazminat Talepleri',
+      'Sigorta Şirketlerine Karşı Tahkim Başvuruları'
+    ],
+    order: 8,
+    isActive: true
+  },
+  {
+    id: 'pa-9',
+    slug: 'sozlesmeler-hukuku',
+    title: 'Sözleşmeler Hukuku',
+    shortDesc: 'Her türlü ticari ve bireysel sözleşmenin hazırlanması, incelenmesi ve risk analizleri.',
+    fullDesc: 'İleride doğabilecek uyuşmazlıkların önüne geçmek adına sözleşmelerin hazırlanması, tarafların hak dengesinin korunması, cezai şart ve fesih koşullarının kanuna uygun biçimde tanzim edilmesini sağlıyoruz.',
+    icon: 'ScrollText',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Distribütörlük, Bayilik ve Franchise Sözleşmeleri',
+      'Gizlilik (NDA) ve Rekabet Yasağı Sözleşmeleri',
+      'Hizmet, Eser ve Taşeronluk Sözleşmeleri',
+      'Sözleşme Revizyonu ve Hukuki Risk Raporlaması',
+      'Sözleşmeden Dönme ve Fesih İhtarnamelerinin Düzenlenmesi'
+    ],
+    order: 9,
+    isActive: true
+  },
+  {
+    id: 'pa-10',
+    slug: 'kvkk-ve-bilisim-hukuku',
+    title: 'KVKK ve Bilişim Hukuku',
+    shortDesc: 'Kişisel verilerin korunması uyum süreçleri, VERBİS kaydı ve siber uyuşmazlıklar.',
+    fullDesc: '6698 sayılı KVKK kapsamında şirketlerin veri işleme envanterlerinin hazırlanması, aydınlatma ve açık rıza metinlerinin kurgulanması, siber zorbalık ve internet üzerinden kişilik hakları ihlallerinde erişimin engellenmesi süreçlerini yönetiyoruz.',
+    icon: 'ShieldCheck',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Şirketlerin KVKK Uyum Projeleri ve VERBİS Tescili',
+      'İnternet Ortamında Unutulma Hakkı ve İçerik Kaldırma',
+      'Kişisel Veri İhlal Bildirimleri ve Kurul Savunmaları',
+      'E-Ticaret ve Mesafeli Satış Hukuku Danışmanlığı',
+      'Yazılım Lisans ve SaaS Hizmet Sözleşmeleri'
+    ],
+    order: 10,
+    isActive: true
+  },
+  {
+    id: 'pa-11',
+    slug: 'idare-hukuku',
+    title: 'İdare Hukuku',
+    shortDesc: 'İdari işlemlerin iptali, tam yargı davaları ve kamu ihale uyuşmazlıkları.',
+    fullDesc: 'Kamu kurum ve kuruluşlarının hukuka aykırı idari işlemlerine karşı iptal davaları ile idarenin kusuru veya kusursuz sorumluluğu neticesinde doğan zararların giderilmesine yönelik tam yargı davalarının yürütülmesi alanında müvekkillerimizin yanındayız.',
+    icon: 'Landmark',
+    image: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80',
+    services: [
+      'Hukuka Aykırı İdari İşlemlerin İptali Davaları',
+      'İdarenin Eylemlerinden Doğan Tam Yargı (Tazminat) Davaları',
+      'Memur Disiplin Cezalarına İtiraz ve İptal Davaları',
+      'Kamu İhale Kurumu (KİK) İtiraz ve Şikayet Süreçleri',
+      'İmar Para Cezaları ve Yıkım Kararlarına Karşı İptal Davaları'
+    ],
+    order: 11,
+    isActive: true
+  }
+];
+
+export const initialTeamMembers: TeamMember[] = [
+  {
+    id: 'tm-1',
+    name: 'Av. Abidin KIR',
+    title: 'Kurucu Avukat',
+    role: 'Yönetici Ortak / Kurucu',
+    photo: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=600&q=80',
+    shortBio: 'Ceza hukuku, şirketler hukuku ve ticari uyuşmazlıklar alanında 20 yılı aşkın mesleki tecrübeye sahiptir.',
+    fullBio: 'İstanbul Üniversitesi Hukuk Fakültesi mezunu olan Av. Abidin KIR, meslek hayatına 2004 yılında başlamış ve o tarihten bu yana Türkiye’nin önde gelen ceza ve ticaret hukuku davalarında müvekkillerini başarıyla temsil etmiştir. Yüksek Mahkeme kararlarına yön veren birçok dava dosyasında müdafilik üstlenmiş olup, kurucusu olduğu KIR HUKUK bünyesinde kurumsal dava stratejilerini bizzat yönetmektedir. İyi derecede İngilizce bilmektedir.',
+    specializations: ['Ceza Hukuku', 'Ticaret Hukuku', 'Şirketler Hukuku', 'Uyuşmazlık Çözümü'],
+    education: [
+      'İstanbul Üniversitesi Hukuk Fakültesi (Lisans, 2003)',
+      'Marmara Üniversitesi Sosyal Bilimler Enstitüsü - Kamu Hukuku (Yüksek Lisans, 2006)'
+    ],
+    experience: [
+      'KIR HUKUK Bürosu — Kurucu Avukat (2010 - Günümüz)',
+      'Demir & Partners Hukuk Bürosu — Kıdemli Dava Avukatı (2004 - 2010)'
+    ],
+    barInfo: 'İstanbul Barosu — Sicil No: 31452',
+    email: 'abidin.kir@kirhukuk.av.tr',
+    phone: '+90 (212) 450 16 16',
+    social: {
+      linkedin: 'https://linkedin.com/in/av-abidin-kir',
+      twitter: 'https://twitter.com/avabadinkir'
+    },
+    order: 1,
+    isActive: true
+  },
+  {
+    id: 'tm-fatma-busra-kir',
+    name: 'Büro Personeli Fatma Büşra KIR',
+    title: 'Büro Personeli',
+    role: 'Büro Yönetimi & Dosya Takip Sorumlusu',
+    photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80',
+    shortBio: 'Dosya kabulü, adliye evrak akışı, randevu takvimi ve müvekkil bilgilendirme süreçlerini titizlikle yürütmektedir.',
+    fullBio: 'KIR HUKUK bünyesinde müvekkil karşılama, evrak ve tebligat kayıt süreçleri, duruşma ve keşif takviminin koordinasyonu ile icra müdürlükleri ve mahkeme kalemleri nezdindeki fiziki evrak akışını profesyonelce yönetmektedir. Güler yüzlü iletişimi ve yüksek organizasyon yeteneğiyle büromuzun idari işleyişinin temel direğidir.',
+    bio: 'Dosya kabulü, adliye evrak akışı, randevu takvimi ve müvekkil bilgilendirme süreçlerini titizlikle yürütmektedir.',
+    specializations: ['Büro Yönetimi', 'Müvekkil İletişimi', 'Dosya & Evrak Takibi', 'Adliye Kalem Koordinasyonu'],
+    education: [
+      'Anadolu Üniversitesi — Büro Yönetimi ve Yönetici Asistanlığı (Lisans)',
+      'Hukuk Sekreterliği ve UYAP / Dava Takip Sistemleri Sertifikası'
+    ],
+    experience: [
+      'KIR HUKUK Bürosu — Büro Personeli (2018 - Günümüz)'
+    ],
+    languages: ['Türkçe (Anadil)', 'İngilizce (Orta)'],
+    barInfo: 'KIR HUKUK — İdari Personel',
+    email: 'fatma.kir@kirhukuk.av.tr',
+    phone: '+90 (212) 450 16 20',
+    social: {
+      linkedin: 'https://linkedin.com/in/fatma-busra-kir'
+    },
+    order: 2,
+    isActive: true
+  },
+  {
+    id: 'tm-2',
+    name: 'Av. Elif YILMAZ',
+    title: 'Kıdemli Avukat',
+    role: 'Aile & Gayrimenkul Hukuku Departman Lideri',
+    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80',
+    shortBio: 'Aile, boşanma, miras ve gayrimenkul hukuku alanında uzmanlaşmış deneyimli dava avukatıdır.',
+    fullBio: 'Ankara Üniversitesi Hukuk Fakültesi’nden onur derecesiyle mezun olmuştur. Özellikle yüksek mal varlıklı çekişmeli boşanma davaları, velayet uyuşmazlıkları ve tapu iptal-tescil davalarında derin bir tecrübeye sahiptir. Aile Hukuku Derneği üyesidir ve aile arabuluculuğu sertifikasına sahiptir.',
+    bio: 'Aile, boşanma, miras ve gayrimenkul hukuku alanında uzmanlaşmış deneyimli dava avukatıdır.',
+    specializations: ['Aile ve Boşanma Hukuku', 'Miras Hukuku', 'Gayrimenkul Hukuku', 'Medeni Hukuk'],
+    education: [
+      'Ankara Üniversitesi Hukuk Fakültesi (Lisans, 2011)',
+      'Galatasaray Üniversitesi Özel Hukuk (Yüksek Lisans, 2014)'
+    ],
+    experience: [
+      'KIR HUKUK Bürosu — Kıdemli Avukat (2016 - Günümüz)',
+      'Yılmaz & Ortakları Hukuk Bürosu — Avukat (2012 - 2016)'
+    ],
+    languages: ['Türkçe (Anadil)', 'İngilizce (İleri)', 'Fransızca (Orta)'],
+    barInfo: 'İstanbul Barosu — Sicil No: 44218',
+    email: 'elif.yilmaz@kirhukuk.av.tr',
+    phone: '+90 (212) 450 16 17',
+    social: {
+      linkedin: 'https://linkedin.com/in/av-elif-yilmaz'
+    },
+    order: 3,
+    isActive: true
+  },
+  {
+    id: 'tm-3',
+    name: 'Av. Mehmet DEMİR',
+    title: 'Avukat',
+    role: 'İş Hukuku & İcra Departman Yöneticisi',
+    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80',
+    shortBio: 'İş hukuku, iş kazaları tazminatları ve kurumsal alacak takibi süreçlerini yönetmektedir.',
+    fullBio: 'İstanbul Üniversitesi Hukuk Fakültesi mezunu olan Mehmet Demir, işçi-işveren uyuşmazlıkları, toplu iş sözleşmeleri, işe iade ve zorunlu arabuluculuk konularında çok sayıda dava yürütmektedir. Aynı zamanda iflas erteleme ve konkordato denetim süreçlerinde uzmandır.',
+    bio: 'İş hukuku, iş kazaları tazminatları ve kurumsal alacak takibi süreçlerini yönetmektedir.',
+    specializations: ['İş Hukuku', 'İcra ve İflas Hukuku', 'Tazminat Hukuku', 'Arabuluculuk'],
+    education: [
+      'İstanbul Üniversitesi Hukuk Fakültesi (Lisans, 2015)'
+    ],
+    experience: [
+      'KIR HUKUK Bürosu — Avukat (2018 - Günümüz)',
+      'Birlik Hukuk Bürosu — Stajyer & Avukat (2015 - 2018)'
+    ],
+    languages: ['Türkçe (Anadil)', 'İngilizce (İleri)'],
+    barInfo: 'İstanbul Barosu — Sicil No: 53102',
+    email: 'mehmet.demir@kirhukuk.av.tr',
+    phone: '+90 (212) 450 16 18',
+    social: {
+      linkedin: 'https://linkedin.com/in/av-mehmet-demir'
+    },
+    order: 4,
+    isActive: true
+  },
+  {
+    id: 'tm-4',
+    name: 'Av. Zeynep KAYA',
+    title: 'Avukat',
+    role: 'KVKK, Bilişim & Sözleşmeler Danışmanı',
+    photo: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=600&q=80',
+    shortBio: 'Kişisel verilerin korunması (KVKK), bilişim hukuku ve uluslararası sözleşmeler alanında çalışmaktadır.',
+    fullBio: 'Koç Üniversitesi Hukuk Fakültesi mezunudur. Kurumsal şirketlerin KVKK uyum süreçlerini başarıyla tamamlamış, e-ticaret sitelerinin sözleşme altyapılarını kurmuştur. Bilişim suçları ve siber güvenlik hukuku alanında akademik çalışmalara katkı sunmaktadır.',
+    bio: 'Kişisel verilerin korunması (KVKK), bilişim hukuku ve uluslararası sözleşmeler alanında çalışmaktadır.',
+    specializations: ['KVKK & Bilişim Hukuku', 'Sözleşmeler Hukuku', 'Fikri Mülkiyet', 'E-Ticaret Hukuku'],
+    education: [
+      'Koç Üniversitesi Hukuk Fakültesi (Lisans, 2018)',
+      'King’s College London — Cyber Law & Data Protection (Sertifika, 2020)'
+    ],
+    experience: [
+      'KIR HUKUK Bürosu — Avukat (2020 - Günümüz)',
+      'TechLegal Danışmanlık — Avukat (2018 - 2020)'
+    ],
+    languages: ['Türkçe (Anadil)', 'İngilizce (İleri)', 'Almanca (İyi)'],
+    barInfo: 'İstanbul Barosu — Sicil No: 62419',
+    email: 'zeynep.kaya@kirhukuk.av.tr',
+    phone: '+90 (212) 450 16 19',
+    social: {
+      linkedin: 'https://linkedin.com/in/av-zeynep-kaya'
+    },
+    order: 5,
+    isActive: true
+  }
+];
+
+export const initialArticles: Article[] = [
+  {
+    id: 'art-1',
+    slug: 'iscinin-hakli-nedenle-fesih-hakki',
+    title: 'İşçinin Haklı Nedenle Fesih Hakkı ve Kıdem Tazminatı',
+    summary: '4857 sayılı İş Kanunu’nun 24. maddesi kapsamında işçinin derhal fesih hakkı doğuran durumlar ve kıdem tazminatı alma şartları detaylı olarak incelenmektedir.',
+    content: `## İşçinin Haklı Nedenle Fesih Hakkı Nedir?
+
+4857 sayılı İş Kanunu’nun 24. maddesi, iş sözleşmesinin işçi tarafından **süresi dolmadan önce veya bildirim süresini beklemeksizin derhal feshedilmesine** imkan tanıyan haklı nedenleri düzenlemektedir. Bu hakkın kullanılması durumunda işçi, iş akdini derhal sonlandırabilir ve şartları varsa **kıdem tazminatına hak kazanır**.
+
+### Haklı Neden Grupları
+
+Kanunda işçi açısından haklı fesih nedenleri üç ana başlık altında toplanmıştır:
+
+1. **Sağlık Sebepleri:** İş sözleşmesinin konusu olan işin yapılması, işin niteliğinden doğan bir sebeple işçinin sağlığı veya yaşayışı için tehlike oluşturursa.
+2. **Ahlak ve İyiniyet Kurallarına Uymayan Haller:** İşverenin işçiye veya ailesi üyelerine karşı hakaret etmesi, cinsel tacizde bulunması veya ücretini kanun veya sözleşme şartlarına uygun ödememesi.
+3. **Zorlayıcı Sebepler:** İşçinin çalıştığı işyerinde bir haftadan fazla süre ile işin durmasını gerektirecek zorlayıcı sebeplerin ortaya çıkması.
+
+### Ücretin ve Fazla Mesainin Ödenmemesi Halinde Fesih
+
+Yargıtay yerleşik içtihatlarına göre, işçinin hak ettiği aylık çıplak ücreti, fazla mesai alacağı, ulusal bayram ve genel tatil (UBGT) ücretleri veya asgari geçim indirimi/primlerinin eksik ya da geç ödenmesi, işçiye **haklı fesih yetkisi** verir. Bu kapsamda iş akdini fesheden işçi istifa etmiş sayılmaz, kıdem tazminatını talep edebilir.
+
+### İhbar Süresi ve Noter İhtarı
+
+Haklı fesih derhal hüküm doğurur; bu nedenle işçinin ayrıca ihbar süresi tanıması gerekmez. Ancak ileride açılabilecek davalarda ispat kolaylığı açısından fesih iradesinin **noter kanalıyla keşide edilecek bir ihtarname** ile işverene tebliğ edilmesi hayati önem taşır.`,
+    category: 'İş Hukuku',
+    author: 'Av. Mehmet DEMİR',
+    readTime: '6 dk',
+    publishedAt: '2026-03-01',
+    updatedAt: '2026-03-05',
+    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80',
+    tags: ['İş Hukuku', 'Kıdem Tazminatı', 'Fesih', 'İşçi Hakları'],
+    isPublished: true,
+    seoTitle: 'İşçinin Haklı Nedenle Fesih Hakkı ve Kıdem Tazminatı | KIR HUKUK',
+    seoDesc: 'İş Kanunu m.24 uyarınca işçinin haklı fesih hakkı, kıdem tazminatı alma şartları ve noter ihtarnamesi süreçleri hakkında rehber.'
+  },
+  {
+    id: 'art-2',
+    slug: 'bosanma-davasinda-mal-paylasimi',
+    title: 'Boşanma Davasında Dikkat Edilmesi Gerekenler ve Mal Paylaşımı',
+    summary: 'Edinilmiş mallara katılma rejiminin tasfiyesi, katkı payı alacağı, kişisel mallar ve boşanma davasında delil toplama stratejileri.',
+    content: `## Boşanmada Mal Rejimi ve Tasfiye İlkeleri
+
+Türk Medeni Kanunu uyarınca 1 Ocak 2002 tarihinden itibaren yasal mal rejimi **Edinilmiş Mallara Katılma Rejimi**dir. Evlilik birliği içerisinde emek karşılığı elde edilen tüm kazanımlar (maaş, gayrimenkul birikimi, şirket kâr payları vb.) edinilmiş mal sayılır.
+
+### Kişisel Mal ile Edinilmiş Mal Ayrımı
+
+- **Kişisel Mallar:** Eşlerden birinin evlilikten önce sahip olduğu mallar, miras yoluyla kalan değerler, karşılıksız kazandırmalar ve manevi tazminat alacakları.
+- **Edinilmiş Mallar:** Evlilik devam ederken her eşin çalışması karşılığı elde ettiği gelirler, sosyal güvenlik ödemeleri ve kişisel malların gelirleri (örneğin miras kalan dairenin kira getirisi).
+
+### Mal Paylaşımı Davası Ne Zaman Açılır?
+
+Mal rejimi tasfiyesi davası, boşanma davasıyla birlikte açılabilirse de boşanma kararı kesinleşmeden hükme bağlanamaz. Mahkeme, mal paylaşımı davasını boşanma davasının sonucunu **bekletici mesele** yapar.
+
+### Mal Kaçırma Girişimlerine Karşı İhtiyati Tedbir
+
+Boşanma sürecinde eşlerden birinin ortak birikimle alınan taşınmazları veya araçları üçüncü kişilere devretme riskine karşı, ivedilikle mahkemeden **tapu ve trafik siciline ihtiyati tedbir konulması** talep edilmelidir.`,
+    category: 'Aile Hukuku',
+    author: 'Av. Elif YILMAZ',
+    readTime: '8 dk',
+    publishedAt: '2026-02-20',
+    updatedAt: '2026-02-25',
+    image: 'https://images.unsplash.com/photo-1575517111478-7f6afd0973db?auto=format&fit=crop&w=800&q=80',
+    tags: ['Aile Hukuku', 'Boşanma', 'Mal Paylaşımı', 'Tedbir'],
+    isPublished: true,
+    seoTitle: 'Boşanmada Mal Paylaşımı ve Dikkat Edilmesi Gerekenler | KIR HUKUK',
+    seoDesc: 'Edinilmiş mallara katılma rejimi, kişisel mallar, katkı payı davaları ve ihtiyati tedbir kararları hakkında detaylı hukuki analiz.'
+  },
+  {
+    id: 'art-3',
+    slug: 'kira-sozlesmelerinde-hak-ve-yukumlulukler',
+    title: 'Kira Sözleşmelerinde Tarafların Hak ve Yükümlülükleri',
+    summary: 'Türk Borçlar Kanunu kapsamında konut ve çatılı işyeri kiralarında tahliye taahhüdü, kira artış oranları ve depozito iadesi.',
+    content: `## Konut ve Çatılı İşyeri Kiralarında Temel Kurallar
+
+Türk Borçlar Kanunu (TBK), konut ve çatılı işyeri kiralarında kiracıyı koruyucu emredici hükümler içermektedir. Belirli süreli kira sözleşmelerinde süre bitse dahi kiracı bildirimde bulunmadıkça sözleşme kendiliğinden birer yıllık dönemler halinde uzar.
+
+### Tahliye Taahhütnamesinin Geçerlilik Şartları
+
+Kiraya verenin elindeki en güçlü hukuki belgelerden biri tahliye taahhütnamesidir. Ancak geçerli olabilmesi için:
+
+1. **Yazılı şekilde yapılmış olması**,
+2. **Kira sözleşmesinin kurulmasından sonraki bir tarihte imzalanmış olması** (sözleşmeyle aynı gün imzalanan taahhütler Yargıtay’ca geçersiz sayılabilmektedir),
+3. **Tahliye tarihinin açıkça gösterilmiş olması** gerekmektedir.
+
+### Kira Tespit ve Uyarlama Davaları
+
+5 yıllık sürenin dolmasının ardından kiraya veren veya kiracı, emsal kira bedelleri doğrultusunda kiranın yeniden belirlenmesi için **Kira Tespit Davası** açabilir. Bu davada hakkaniyet indirimi uygulanarak bölgedeki rayiç bedel tespiti yapılır.`,
+    category: 'Gayrimenkul Hukuku',
+    author: 'Av. Abidin KIR',
+    readTime: '5 dk',
+    publishedAt: '2026-02-10',
+    updatedAt: '2026-02-15',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
+    tags: ['Gayrimenkul', 'Kira Hukuku', 'Tahliye', 'Kira Tespiti'],
+    isPublished: true,
+    seoTitle: 'Kira Sözleşmelerinde Tarafların Hak ve Yükümlülükleri | KIR HUKUK',
+    seoDesc: 'Tahliye taahhütnamesi geçerlilik şartları, 5 yıllık kira tespit davası ve ev sahibi kiracı hakları rehberi.'
+  },
+  {
+    id: 'art-4',
+    slug: 'miras-hukukunda-yasal-mirascilik',
+    title: 'Miras Hukukunda Saklı Pay ve Tenkis Davaları',
+    summary: 'Miras bırakanın mal kaçırması, saklı paylı mirasçıların hakları, tenkis davası açma süreleri ve muris muvazaası iptal şartları.',
+    content: `## Saklı Paylı Mirasçılar Kimlerdir?
+
+Türk Medeni Kanunu uyarınca mirasbırakan, terekesi üzerinde dilediği gibi tasarruf edemez. Kanun koyucu, belirli yakın akrabaları korumak amacıyla saklı pay kurumu ihdas etmiştir.
+
+- **Altsoy (Çocuklar, Torunlar):** Yasal miras paylarının 1/2'si saklı paydır.
+- **Anne ve Baba:** Yasal miras paylarının 1/4'ü saklı paydır.
+- **Sağ Kalan Eş:** Altsoy veya ana-baba ile birlikte mirasçıysa yasal payının tamamı; tek başına mirasçıysa 3/4'ü saklı paydır.
+
+### Tenkis Davası ve Hak Düşürücü Süreler
+
+Miras bırakan, saklı payı ihlal edecek şekilde ölüme bağlı veya sağlararası tasarrufta bulunmuşsa (örneğin bir çocuğuna tüm mallarını hibe etmişse), diğer mirasçılar **Tenkis Davası** açabilirler.
+
+Tenkis davası açma süresi; saklı paylarının zedelendiğini öğrendikleri tarihten başlayarak **1 yıl** ve her halde vasiyetnamelerin açıldığı veya mirasın geçtiği tarihten başlayarak **10 yıl** geçmekle düşer.`,
+    category: 'Miras Hukuku',
+    author: 'Av. Elif YILMAZ',
+    readTime: '7 dk',
+    publishedAt: '2026-01-25',
+    updatedAt: '2026-01-28',
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80',
+    tags: ['Miras', 'Tenkis', 'Saklı Pay', 'Muris Muvazaası'],
+    isPublished: true,
+    seoTitle: 'Miras Hukukunda Saklı Pay ve Tenkis Davaları | KIR HUKUK',
+    seoDesc: 'Saklı pay oranları, miras kaçırma davaları ve tenkis süreci hakkında uzman avukat incelemesi.'
+  },
+  {
+    id: 'art-5',
+    slug: 'icra-takibine-itiraz-sureleri',
+    title: 'İcra Takibine İtiraz Süreleri ve Menfi Tespit Davası',
+    summary: 'İlamsız icra takiplerinde 7 günlük itiraz süresi, yetki ve borca itirazın hukuki sonuçları ve borçlu olunmadığının tespiti davaları.',
+    content: `## İlamsız Takiplerde Ödeme Emrine İtiraz
+
+İcra müdürlüğü tarafından gönderilen genel haciz yoluyla takipteki (Örnek No: 7) ödeme emrini tebellüğ eden borçlunun, tebliğ tarihinden itibaren **7 gün içinde** icra dairesine itiraz hakkı mevcuttur.
+
+### 7 Günlük Hak Düşürücü Süre
+
+Süre, ödeme emrinin borçluya veya aynı konutta oturan ehil yakınına tebliğ edildiği günün ertesi gününden itibaren işlemeye başlar. 7. günün mesai bitimine kadar dilekçe verilmezse takip kesinleşir ve alacaklı derhal haciz işlemlerine başlayabilir.
+
+### İtirazın Şekli ve Türleri
+
+- **Borca İtiraz:** Borcun bulunmadığı, ödendiği veya vadesinin gelmediği yönündeki itirazlar.
+- **İmzaya İtiraz:** Kambiyo senetlerinde imzanın kendisine ait olmadığı iddiası açık ve net olarak bildirilmelidir.
+- **Yetki İtirazı:** Takibin yetkisiz icra dairesinde açıldığı yönündeki itiraz.
+
+### Menfi Tespit Davası
+
+Takibe süresinde itiraz edemeyen veya takipten önce borçlu olmadığını kanıtlamak isteyen kişi, genel mahkemelerde **Menfi Tespit Davası** açabilir. İcra takibinden sonra açılan menfi tespit davasında takibin durması için en az %15 teminat yatırılması gerekir.`,
+    category: 'İcra Hukuku',
+    author: 'Av. Abidin KIR',
+    readTime: '6 dk',
+    publishedAt: '2026-01-15',
+    updatedAt: '2026-01-18',
+    image: 'https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?auto=format&fit=crop&w=800&q=80',
+    tags: ['İcra', 'Menfi Tespit', 'İtiraz Süresi', 'Haciz'],
+    isPublished: true,
+    seoTitle: 'İcra Takibine İtiraz Süreleri ve Menfi Tespit Davası | KIR HUKUK',
+    seoDesc: '7 günlük itiraz süresi kaçırıldığında ne yapılmalı? Menfi tespit davası ve ihtiyati tedbir şartları.'
+  }
+];
+
+export const initialFaqItems: FaqItem[] = [
+  {
+    id: 'faq-1',
+    question: 'Avukata hangi durumlarda başvurmalıyım?',
+    answer: 'Hakkınızda açılmış bir dava veya icra takibi olduğunda, tarafınıza noterden bir ihtarname ulaştığında, sözleşme imzalamadan önce risk analizi yaptırmak istediğinizde veya bir hakkınızın ihlal edildiğini düşündüğünüz anda zaman kaybetmeden avukata başvurmanız hak kaybına uğramanızı engeller.',
+    category: 'Genel',
+    order: 1,
+    isActive: true
+  },
+  {
+    id: 'faq-2',
+    question: 'Boşanma davası anlaşmalı olarak ne kadar sürede sonuçlanır?',
+    answer: 'Tarafların boşanma, nafaka, velayet ve mal paylaşımı gibi tüm konularda tam mutabakata vardığı ve usulüne uygun bir anlaşmalı boşanma protokolünün hazırlandığı durumlarda mahkeme yoğunluğuna bağlı olarak genellikle 1 ila 4 hafta içerisinde tek celsede sonuçlanmaktadır.',
+    category: 'Aile Hukuku',
+    order: 2,
+    isActive: true
+  },
+  {
+    id: 'faq-3',
+    question: 'İcra takibine kaç gün içinde itiraz etmeliyim?',
+    answer: 'İlamsız icra takiplerinde ödeme emrinin size tebliğ edildiği tarihten itibaren kesin 7 gün içerisinde yetkili icra dairesine itiraz dilekçesi vermeniz gerekmektedir. Süre kaçırıldığı takdirde takip kesinleşir ve haciz safhasına geçilir.',
+    category: 'İcra Hukuku',
+    order: 3,
+    isActive: true
+  },
+  {
+    id: 'faq-4',
+    question: 'İşten haksız yere çıkarıldığımda hangi haklara sahibim?',
+    answer: 'İş Kanunu kapsamında en az 1 yıllık kıdeminiz varsa kıdem tazminatı, ihbar süresi tanınmadıysa ihbar tazminatı, kullanılmamış yıllık izin ücretleri, ödenmemiş fazla mesai ve genel tatil ücretlerinizi talep edebilirsiniz. Ayrıca işyerinde 30 veya daha fazla işçi çalışıyorsa ve 6 aylık kıdeminiz varsa 1 ay içinde arabuluculuğa başvurarak işe iade davası açabilirsiniz.',
+    category: 'İş Hukuku',
+    order: 4,
+    isActive: true
+  },
+  {
+    id: 'faq-5',
+    question: 'Miras paylaşımında anlaşmazlık olursa dava süreci nasıl işler?',
+    answer: 'Mirasçılar arasında terekenin rızaen paylaşılamaması halinde Sulh Hukuk Mahkemesi’nde Ortaklığın Giderilmesi (İzale-i Şüyu) davası açılır. Mahkeme öncelikle aynen taksim şartlarını inceler; bu mümkün değilse terekeye dahil mallar icra kanalıyla açık artırmada satılarak bedeli hisseleri oranında mirasçılara paylaştırılır.',
+    category: 'Miras Hukuku',
+    order: 5,
+    isActive: true
+  },
+  {
+    id: 'faq-6',
+    question: 'Avukatlık danışmanlık ücreti nasıl belirlenir?',
+    answer: 'Avukatlık ücretleri, Türkiye Barolar Birliği tarafından her yıl yayımlanan Avukatlık Asgari Ücret Tarifesi’nin (AAÜT) altında olmamak kaydıyla, işin niteliği, dava konusu uyuşmazlığın karmaşıklığı ve harcanacak mesai gözetilerek büromuz ile müvekkil arasında şeffafça kararlaştırılır.',
+    category: 'Ücretlendirme',
+    order: 6,
+    isActive: true
+  }
+];
+
+export const initialAnnouncements: Announcement[] = [
+  {
+    id: 'ann-1',
+    title: '2026 Yılı Yeni Adres ve Ofis Genişleme Duyurusu',
+    content: 'Müvekkillerimize daha kapsamlı, konforlu ve modern bir altyapıyla hizmet verebilmek adına merkez ofisimiz Levent Büyükdere Caddesi üzerindeki yeni katına taşınmıştır.',
+    badge: 'Kurumsal',
+    date: '2026-03-01',
+    isPublished: true,
+    urgent: false
+  },
+  {
+    id: 'ann-2',
+    title: 'Yeni Yargı Paketi ve Kanun Yolu Süreleri Değişikliği Hakkında',
+    content: 'Resmi Gazete’de yayımlanarak yürürlüğe giren yeni mevzuat değişiklikleriyle ceza ve hukuk yargılamalarında istinaf ve temyiz başvuru süreleri yeniden düzenlenmiştir. Hak kaybına uğramamak adına dava dosyalarınızın takibinde avukatınıza danışınız.',
+    badge: 'Hukuki Bilgilendirme',
+    date: '2026-02-15',
+    isPublished: true,
+    urgent: true
+  },
+  {
+    id: 'ann-3',
+    title: 'Resmi Tatil ve Adli Tatil Çalışma Düzenimiz',
+    content: 'Büromuz resmi tatil günlerinde acil gözaltı, tutuklama ve ihtiyati tedbir işlemlerine yönelik nöbetçi avukatlık sistemiyle kesintisiz hizmet vermeye devam etmektedir.',
+    badge: 'Çalışma Saatleri',
+    date: '2026-01-10',
+    isPublished: true,
+    urgent: false
+  }
+];
+
+export const initialGalleryItems: GalleryItem[] = [
+  {
+    id: 'gal-1',
+    type: 'photo',
+    title: 'KIR HUKUK Ana Kabul Salonu',
+    description: 'Levent merkez ofisimiz toplantı ve kabul alanı.',
+    url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80',
+    album: 'Ofisimiz',
+    order: 1
+  },
+  {
+    id: 'gal-2',
+    type: 'photo',
+    title: 'Büyük Konferans & Müzakere Odası',
+    description: 'Şirket genel kurulları, arabuluculuk ve tahkim müzakereleri için tam donanımlı salonumuz.',
+    url: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80',
+    album: 'Ofisimiz',
+    order: 2
+  },
+  {
+    id: 'gal-3',
+    type: 'photo',
+    title: 'Hukuk Kütüphanesi ve Araştırma Merkezi',
+    description: 'Geniş içtihat arşivi ve akademik hukuk literatürümüzün yer aldığı çalışma alanımız.',
+    url: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=500&q=80',
+    album: 'Ofisimiz',
+    order: 3
+  },
+  {
+    id: 'gal-4',
+    type: 'photo',
+    title: 'Özel Danışmanlık ve Görüşme Odası',
+    description: 'Müvekkil mahremiyetini en üst düzeyde koruyan ses yalıtımlı özel görüşme odası.',
+    url: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80',
+    album: 'Ofisimiz',
+    order: 4
+  },
+  {
+    id: 'gal-5',
+    type: 'video',
+    title: 'KIR HUKUK Tanıtım Filmi ve Kurumsal Yaklaşım',
+    description: 'Hukuk büromuzun çalışma prensipleri, departman yapısı ve kurumsal vizyonu.',
+    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80',
+    album: 'Videolar',
+    order: 5
+  }
+];
+
+export const initialCustomPages: CustomPage[] = [
+  {
+    id: 'page-kvkk',
+    slug: 'kvkk-aydinlatma-metni',
+    title: 'KVKK Aydınlatma Metni',
+    summary: '6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca kişisel verilerinizin işlenmesi ve korunması esasları.',
+    content: `## Kişisel Verilerin Korunması ve İşlenmesi Hakkında Aydınlatma Metni
+
+KIR HUKUK olarak, 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca Veri Sorumlusu sıfatıyla, büromuzla paylaştığınız kişisel verilerinizin güvenliğine ve gizliliğine azami hassasiyet göstermekteyiz.
+
+### 1. Kişisel Verilerin Toplanma Amacı
+Tarafımıza iletilen kimlik (ad, soyad, T.C. kimlik no), iletişim (telefon, e-posta, adres) ve hukuki işlem bilgileri; avukatlık sözleşmesinin ifası, hukuki danışmanlık ve temsil faaliyetlerinin yürütülmesi, mahkemeler ve icra daireleri nezdinde gerekli işlemlerin yapılması, faturalandırma ve yasal bildirim zorunluluklarının yerine getirilmesi amacıyla toplanmaktadır.
+
+### 2. Verilerin Aktarılması
+Kişisel verileriniz, Avukatlık Kanunu ve ilgili mevzuat uyarınca sır saklama yükümlülüğü altında yalnızca yetkili adli ve idari mercilerle (mahkemeler, cumhuriyet savcılıkları, icra müdürlükleri, noterlikler) paylaşılmakta; ticari veya pazarlama amacıyla hiçbir üçüncü kişiyle paylaşılmamaktadır.
+
+### 3. İlgili Kişinin Hakları
+KVKK’nın 11. maddesi uyarınca veri sahipleri; kişisel verilerinin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme, amacına uygun kullanılıp kullanılmadığını öğrenme ve düzeltilmesini talep etme haklarına sahiptir. Başvurularınızı **info@kirhukuk.av.tr** adresine yazılı olarak iletebilirsiniz.`,
+    seoTitle: 'KVKK Aydınlatma Metni | KIR HUKUK',
+    seoDesc: '6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca KIR HUKUK veri sorumlusu aydınlatma bildirimi.',
+    isPublished: true,
+    showOnHome: true,
+    showInNavbar: true,
+    showInFooter: true,
+    badge: 'Yasal',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-gizlilik',
+    slug: 'gizlilik-politikasi',
+    title: 'Gizlilik Politikası',
+    summary: 'Müvekkil mahremiyeti, avukatlık meslek ilkeleri ve bilgi güvenliği standartlarımız.',
+    content: `## KIR HUKUK Gizlilik Politikası
+
+Bu Gizlilik Politikası, KIR HUKUK web sitesini ziyaret eden kullanıcıların ve müvekkillerimizin gizliliğini koruma altına almak amacıyla oluşturulmuştur.
+
+### 1. Bilgi Güvenliği
+Büromuz, müvekkil mahremiyetini ve avukatlık meslek ilkelerinin temel taşı olan sır saklama yükümlülüğünü en üst düzey kurumsal öncelik kabul eder. Web sitemizde formlar aracılığıyla toplanan hiçbir bilgi izinsiz paylaşılmaz.
+
+### 2. İletişim Formları Güvenliği
+İletişim formundan gönderilen iletiler şifreli bağlantı (SSL) üzerinden sunucularımıza iletilmekte ve yalnızca yetkili avukatlarımız tarafından incelenmektedir.`,
+    seoTitle: 'Gizlilik Politikası | KIR HUKUK',
+    seoDesc: 'KIR HUKUK veri güvenliği, avukatlık sır saklama yükümlülüğü ve gizlilik esasları.',
+    isPublished: true,
+    showOnHome: true,
+    showInNavbar: true,
+    showInFooter: true,
+    badge: 'Gizlilik',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-cerez',
+    slug: 'cerez-politikasi',
+    title: 'Çerez Politikası',
+    summary: 'Web sitemizde kullanılan zorunlu ve analitik çerezler ile ziyaretçi deneyimi yönetimi.',
+    content: `## Çerez (Cookie) Kullanımı Hakkında Bilgilendirme
+
+KIR HUKUK web sitemizde, ziyaretçilerimizin gezinme deneyimini iyileştirmek, sitenin temel fonksiyonlarını güvenle yerine getirmek ve anonim performans verilerini ölçümlemek amacıyla çerezler kullanılmaktadır.
+
+### 1. Zorunlu Çerezler
+Sitenin güvenli çalışması, sayfa geçişleri ve oturum yönetimi için kesinlikle gerekli olan çerezlerdir. Devre dışı bırakılamazlar.
+
+### 2. Analitik Çerezler
+Ziyaretçi sayısı, görüntülenen sayfalar ve site performansı hakkında anonim istatistiki veriler toplayarak sitemizi geliştirmemize yardımcı olur.`,
+    seoTitle: 'Çerez Politikası | KIR HUKUK',
+    seoDesc: 'Web sitemizde kullanılan çerezler, saklama süreleri ve tercihlerin yönetimi.',
+    isPublished: true,
+    showOnHome: false,
+    showInNavbar: false,
+    showInFooter: true,
+    badge: 'Çerezler',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-yasal-uyari',
+    slug: 'yasal-uyari',
+    title: 'Yasal Uyarı',
+    summary: 'Türkiye Barolar Birliği reklam yasağı yönetmeliği ve meslek kuralları uyum bildirimi.',
+    content: `## Yasal Uyarı ve Meslek Kuralları Bildirimi
+
+Bu internet sitesinde yer alan tüm yazılı ve görsel materyaller, makaleler ve açıklamalar yalnızca genel bilgilendirme amacıyla hazırlanmıştır. 
+
+1. **Danışmanlık Sayılmaz:** Sitedeki bilgiler kesinlikle hukuki mütalaa veya avukatlık hizmeti niteliği taşımaz. Her somut olayın özellikleri farklılık gösterebileceğinden, doğrudan bir avukata danışılmadan bu bilgilere dayanarak hareket edilmemelidir.
+2. **Vekalet İlişkisi:** Site üzerinden veya iletişim formları aracılığıyla büromuzla iletişime geçilmiş olması tek başına avukat-müvekkil ilişkisi kurmaz.
+3. **TBB Kuralları:** Web sitemiz, Türkiye Barolar Birliği’nin Reklam Yasağı Yönetmeliği ve Meslek Kuralları’na tam uyumlu olarak tasarlanmıştır.`,
+    seoTitle: 'Yasal Uyarı | KIR HUKUK',
+    seoDesc: 'KIR HUKUK Türkiye Barolar Birliği reklam yasağı ve meslek kurallarına uyum yasal uyarısı.',
+    isPublished: true,
+    showOnHome: false,
+    showInNavbar: false,
+    showInFooter: true,
+    badge: 'Mevzuat',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-kullanim-kosullari',
+    slug: 'kullanim-kosullari',
+    title: 'Kullanım Koşulları',
+    summary: 'KIR HUKUK web sitesi telif hakları, fikri mülkiyet ve yasal kullanım şartları.',
+    content: `## Web Sitesi Kullanım Koşulları
+
+KIR HUKUK web sitesine erişim sağlayan ve hizmetlerden yararlanan tüm ziyaretçiler aşağıdaki koşulları kabul etmiş sayılır:
+
+- Sitede yer alan metin, görsel, logo ve tasarımlar Fikir ve Sanat Eserleri Kanunu kapsamında korunmaktadır; izinsiz kopyalanamaz veya çoğaltılamaz.
+- Web sitesi üzerinden paylaşılan bilgilerin güncelliği konusunda gerekli özen gösterilmekle birlikte, mevzuat değişikliklerinden ötürü doğabilecek gecikmelerden büromuz sorumlu tutulamaz.`,
+    seoTitle: 'Kullanım Koşulları | KIR HUKUK',
+    seoDesc: 'KIR HUKUK kurumsal web sitesi telif hakları ve kullanım koşulları.',
+    isPublished: true,
+    showOnHome: false,
+    showInNavbar: false,
+    showInFooter: true,
+    badge: 'Kullanım',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-bursa',
+    slug: 'bursa',
+    title: 'Bursa Avukatlık ve Hukuki Danışmanlık',
+    summary: 'KIR HUKUK Bursa ve Güney Marmara bölgesindeki bireysel ve kurumsal müvekkillerine kapsamlı dava ve danışmanlık hizmeti sunmaktadır.',
+    content: `## Bursa Hukuk ve Danışmanlık Hizmetlerimiz
+
+KIR HUKUK, Bursa ilinde ve Güney Marmara bölgesinde faaliyet gösteren yerli ve yabancı şirketlere, sanayi kuruluşlarına ve bireylere etkin, sonuç odaklı avukatlık ve hukuki danışmanlık hizmeti sunmaktadır.
+
+### Faaliyet Kapsamımız
+
+Bursa Adliyesi ve çevre mülhakat adliyelerinde görülen uyuşmazlıklarda; Ceza Hukuku, Aile Hukuku, İş ve Sosyal Güvenlik Hukuku, Ticaret ve Şirketler Hukuku ile Gayrimenkul Hukuku başta olmak üzere müvekkillerimizin haklarını titizlikle savunuyoruz.
+
+- **Dava Takibi ve Temsil:** Bursa merkez ve ilçelerindeki tüm ilk derece, istinaf ve icra mercilerinde etkin temsil.
+- **Kurumsal Danışmanlık:** Bursa sanayi ve ticaret odalarına kayıtlı şirketler için sözleşme hazırlığı, risk yönetimi ve hukuki uyum.
+- **Alternatif Uyuşmazlık Çözümü:** İhtilafların sulh veya arabuluculuk yoluyla en kısa sürede çözüme kavuşturulması.`,
+    seoTitle: 'Bursa Avukatlık ve Hukuki Danışmanlık | KIR HUKUK',
+    seoDesc: 'Bursa merkez ve ilçelerinde uzman avukat kadromuzla kapsamlı hukuki danışmanlık ve dava takip hizmetleri.',
+    isPublished: true,
+    showOnHome: true,
+    showInNavbar: true,
+    showInFooter: true,
+    badge: 'Bölgesel Hizmet',
+    parentMenuId: 'm-2',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-nilufer',
+    slug: 'nilufer',
+    title: 'Nilüfer Hukuk ve Avukatlık Hizmetleri',
+    summary: 'Bursa Nilüfer bölgesinde ticaret, gayrimenkul, aile ve iş hukuku uyuşmazlıklarında profesyonel hukuki temsil.',
+    content: `## Nilüfer Bölgesi Avukatlık Hizmetleri
+
+Bursa’nın en dinamik ticaret, iş ve yerleşim merkezlerinden biri olan Nilüfer ilçesinde; şirketlere, girişimcilere ve şahıslara yönelik uzman avukatlık hizmeti sağlıyoruz.
+
+### Nilüfer’de Öne Çıkan Hukuki Çalışmalarımız
+
+- **Şirketler ve Ticaret Hukuku:** Nilüfer Organize Sanayi Bölgeleri (NOSAB vb.) bünyesindeki işletmelere kurumsal danışmanlık, ticari alacak takibi ve sözleşme yönetimi.
+- **Gayrimenkul ve İnşaat Hukuku:** Nilüfer bölgesindeki kentsel dönüşüm, tapu iptal-tescil, kira ve kat mülkiyeti uyuşmazlıkları.
+- **İş Hukuku Uyuşmazlıkları:** Kıdem, ihbar, fazla mesai alacakları ve işe iade davalarında işçi ve işveren vekilliği.
+- **Aile ve Boşanma Hukuku:** Anlaşmalı ve çekişmeli boşanma, nafaka, velayet ve mal rejiminin tasfiyesi süreçleri.`,
+    seoTitle: 'Nilüfer Avukatlık Hizmetleri | KIR HUKUK Bursa',
+    seoDesc: 'Bursa Nilüfer ilçesinde ticari davalar, gayrimenkul, aile ve iş hukuku alanlarında profesyonel hukuki destek.',
+    isPublished: true,
+    showOnHome: true,
+    showInNavbar: true,
+    showInFooter: true,
+    badge: 'Nilüfer',
+    parentMenuId: 'sub-bursa',
+    updatedAt: '2026-03-01'
+  },
+  {
+    id: 'page-osmangazi',
+    slug: 'osmangazi',
+    title: 'Osmangazi Hukuk ve Avukatlık Hizmetleri',
+    summary: 'Bursa Osmangazi ilçesinde ceza, idare, icra ve tazminat davalarında tecrübeli avukat kadromuzla yanınızdayız.',
+    content: `## Osmangazi Bölgesi Avukatlık Hizmetleri
+
+Bursa Adalet Sarayı’nın yer aldığı Osmangazi ilçesinde, adli süreçlerin merkezinde yer alarak müvekkillerimizin hak arama hürriyetini en üst seviyede temsil etmekteyiz.
+
+### Osmangazi’de Sunduğumuz Hukuki Hizmetler
+
+- **Ceza Hukuku:** Osmangazi Cumhuriyet Başsavcılığı soruşturmaları, Sulh Ceza Hakimliği sorguları ile Asliye ve Ağır Ceza Mahkemelerinde sanık müdafiliği ve mağdur vekilliği.
+- **İcra ve İflas Hukuku:** Bursa İcra Dairelerinde kurumsal ve bireysel alacakların tahsili, haciz ve ihtiyati haciz işlemleri.
+- **Tazminat ve Tüketici Davaları:** Trafik kazası, iş kazası, haksız fiilden kaynaklanan maddi-manevi tazminat talepleri.
+- **Miras ve Gayrimenkul Davaları:** Veraset ilamı, ortaklığın giderilmesi (izale-i şüyu) ve tenkis davaları.`,
+    seoTitle: 'Osmangazi Avukatlık Hizmetleri | KIR HUKUK Bursa',
+    seoDesc: 'Bursa Osmangazi adliyesi yakınında ceza, icra, miras ve tazminat davalarında tecrübeli hukuki danışmanlık.',
+    isPublished: true,
+    showOnHome: true,
+    showInNavbar: true,
+    showInFooter: true,
+    badge: 'Osmangazi',
+    parentMenuId: 'sub-bursa',
+    updatedAt: '2026-03-01'
+  }
+];
+
+export const initialHomeSections: HomeSection[] = [
+  { id: 'sec-hero', key: 'hero', name: 'Hero (Giriş Başlığı ve Karşılama)', title: 'Hero Bölümü', subtitle: 'Ana slogan ve CTA butonları', isEnabled: true, order: 1 },
+  { id: 'sec-about', key: 'about', name: 'Kısa Hakkımızda & Rakamlarla Büromuz', title: 'Hakkımızda', subtitle: 'Kurumsal miras ve temel prensipler', isEnabled: true, order: 2 },
+  { id: 'sec-practices', key: 'practices', name: 'Çalışma Alanlarımız', title: 'Uzmanlık ve Faaliyet Alanlarımız', subtitle: 'Hukukun temel disiplinlerinde profesyonel temsil', isEnabled: true, order: 3 },
+  { id: 'sec-why-us', key: 'why_us', name: 'Neden KIR HUKUK?', title: 'Neden Biz?', subtitle: 'Güvenilirlik, gizlilik ve sonuç odaklı stratejiler', isEnabled: true, order: 4 },
+  { id: 'sec-team', key: 'team', name: 'Ekibimiz (Avukat Kadrosu)', title: 'Avukat Kadromuz', subtitle: 'Alanında yetkin ve tecrübeli hukukçular', isEnabled: true, order: 5 },
+  { id: 'sec-articles', key: 'articles', name: 'Hukuki Bilgiler & Makaleler', title: 'Güncel Hukuki Makaleler', subtitle: 'Yargı kararları ve mevzuat incelemeleri', isEnabled: true, order: 6 },
+  { id: 'sec-faq', key: 'faq', name: 'Sık Sorulan Sorular (SSS)', title: 'Sık Sorulan Sorular', subtitle: 'Müvekkillerimizin en çok merak ettiği konular', isEnabled: true, order: 7 },
+  { id: 'sec-announcements', key: 'announcements', name: 'Duyurular & Ofis Haberleri', title: 'Duyurular', subtitle: 'Büromuzdan güncel gelişmeler ve bildirimler', isEnabled: true, order: 8 },
+  { id: 'sec-quick-contact', key: 'quick_contact', name: 'Hızlı İletişim & Randevu CTA', title: 'Hızlı İletişim', subtitle: 'Tek tıkla randevu ve acil hukuki destek', isEnabled: true, order: 9 },
+  { id: 'sec-map', key: 'map', name: 'Ofis Konumu & Yol Tarifi', title: 'Harita ve Ulaşım', subtitle: 'İstanbul Levent merkez ofisimiz', isEnabled: true, order: 10 },
+  { id: 'sec-contact', key: 'contact', name: 'İletişim Formu & Bilgiler', title: 'Bize Ulaşın', subtitle: 'Hukuki uyuşmazlığınız için ilk adımı atın', isEnabled: true, order: 11 }
+];
+
+export const initialMessages: ContactMessage[] = [
+  {
+    id: 'msg-1',
+    name: 'Murat Çelik',
+    phone: '+90 532 111 22 33',
+    email: 'murat.celik@example.com',
+    subject: 'İş Akdi Feshi ve Kıdem Tazminatı Danışmanlığı',
+    message: 'Merhaba, 6 yıldır çalıştığım teknoloji firmasından haksız nedenle çıkarıldım. İhbar ve kıdem tazminatımı eksik hesapladılar. İşe iade davası ve tazminat takibi için avukatlık randevusu talep ediyorum.',
+    date: '2026-03-10 14:25',
+    createdAt: '2026-03-10T14:25:00',
+    practiceArea: 'İş Hukuku',
+    isRead: false,
+    status: 'new',
+    notes: 'İş hukuku departmanına yönlendirilecek.'
+  },
+  {
+    id: 'msg-2',
+    name: 'Selin Yıldız',
+    phone: '+90 544 333 44 55',
+    email: 'selin.yildiz@example.com',
+    subject: 'Anlaşmalı Boşanma Protokolü Hazırlanması',
+    message: 'Eşimle karşılıklı anlaşarak boşanma kararı aldık. Çocuk velayeti ve ev paylaşımına dair protokolümüzün hukuka uygun hazırlanması ve davanın tek celsede bitirilmesi hususunda destek rica ederiz.',
+    date: '2026-03-08 10:15',
+    createdAt: '2026-03-08T10:15:00',
+    practiceArea: 'Aile ve Boşanma Hukuku',
+    isRead: true,
+    status: 'read',
+    notes: 'Protokol taslağı için bilgi istendi.'
+  },
+  {
+    id: 'msg-3',
+    name: 'Kaya Lojistik Ltd. Şti. (Kemal Kaya)',
+    phone: '+90 216 444 55 66',
+    email: 'kemal@kayalojistik.com.tr',
+    subject: 'Şirketler Hukuku Sürekli Danışmanlık Teklifi',
+    message: 'Şirketimizin sözleşme incelemeleri, ticari alacak takipleri ve iş hukuku süreçlerinin yürütülmesi amacıyla aylık sürekli danışmanlık hizmeti almak istiyoruz. Randevu rica ederiz.',
+    date: '2026-03-04 16:40',
+    createdAt: '2026-03-04T16:40:00',
+    practiceArea: 'Ticaret ve Şirketler Hukuku',
+    isRead: true,
+    status: 'replied',
+    notes: 'Av. Abidin KIR ile toplantı organize edildi.'
+  }
+];
+
+export const initialUsers: User[] = [
+  {
+    id: 'usr-1',
+    name: 'Yönetici (Super Admin)',
+    email: 'admin@kirhukuk.av.tr',
+    role: 'super_admin'
+  },
+  {
+    id: 'usr-2',
+    name: 'Editör Hukukçu',
+    email: 'editor@kirhukuk.av.tr',
+    role: 'editor'
+  },
+  {
+    id: 'usr-3',
+    name: 'Yazar Avukat',
+    email: 'yazar@kirhukuk.av.tr',
+    role: 'author'
+  }
+];
+
+export const initialAuditLogs: AuditLog[] = [
+  {
+    id: 'log-1',
+    user: 'Yönetici (Super Admin)',
+    role: 'super_admin',
+    action: 'Sistem Başlatıldı',
+    target: 'KIR HUKUK CMS Portalı',
+    timestamp: '2026-03-11 09:00'
+  },
+  {
+    id: 'log-2',
+    user: 'Yönetici (Super Admin)',
+    role: 'super_admin',
+    action: 'İçerik Güncellendi',
+    target: 'Çalışma Alanları (11 Uzmanlık Alanı)',
+    timestamp: '2026-03-11 11:30'
+  },
+  {
+    id: 'log-3',
+    user: 'Editör Hukukçu',
+    role: 'editor',
+    action: 'Makale Yayınlandı',
+    target: 'İşçinin Haklı Nedenle Fesih Hakkı',
+    timestamp: '2026-03-11 14:10'
+  }
+];
+
+export const initialMediaItems: MediaItem[] = [
+  {
+    id: 'media-1',
+    title: 'KIR HUKUK Ana Kabul Salonu',
+    url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80',
+    category: 'Ofis',
+    size: '1.2 MB',
+    uploadedAt: '2026-03-01'
+  },
+  {
+    id: 'media-2',
+    title: 'Büyük Konferans & Müzakere Odası',
+    url: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80',
+    category: 'Toplantı',
+    size: '1.5 MB',
+    uploadedAt: '2026-03-01'
+  },
+  {
+    id: 'media-3',
+    title: 'Hukuk Kütüphanesi ve Araştırma Merkezi',
+    url: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=500&q=80',
+    category: 'Kütüphane',
+    size: '1.8 MB',
+    uploadedAt: '2026-03-02'
+  },
+  {
+    id: 'media-4',
+    title: 'Özel Danışmanlık ve Görüşme Odası',
+    url: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=500&q=80',
+    category: 'Ofis',
+    size: '1.1 MB',
+    uploadedAt: '2026-03-03'
+  },
+  {
+    id: 'media-5',
+    title: 'Adalet Terazisi & Hukuk Kitapları',
+    url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=500&q=80',
+    category: 'Hukuk',
+    size: '2.0 MB',
+    uploadedAt: '2026-03-04'
+  },
+  {
+    id: 'media-6',
+    title: 'Bursa Adalet Sarayı & Dava Dosyaları',
+    url: 'https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1436450412740-6b988f486c6b?auto=format&fit=crop&w=500&q=80',
+    category: 'Hukuk',
+    size: '1.4 MB',
+    uploadedAt: '2026-03-05'
+  },
+  {
+    id: 'media-7',
+    title: 'Avukat Çalışma Masası ve İnceleme Alanı',
+    url: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=500&q=80',
+    category: 'Ofis',
+    size: '1.3 MB',
+    uploadedAt: '2026-03-06'
+  },
+  {
+    id: 'media-8',
+    title: 'Klasik Hukuk Kütüphanesi ve Ciltli İçtihatlar',
+    url: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=500&q=80',
+    category: 'Kütüphane',
+    size: '1.6 MB',
+    uploadedAt: '2026-03-07'
+  },
+  {
+    id: 'media-9',
+    title: 'Av. Abidin KIR - Kurucu Avukat',
+    url: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
+    category: 'Ekip',
+    size: '950 KB',
+    uploadedAt: '2026-03-08'
+  },
+  {
+    id: 'media-10',
+    title: 'Fatma Büşra KIR - Büro Personeli',
+    url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    category: 'Ekip',
+    size: '880 KB',
+    uploadedAt: '2026-03-08'
+  },
+  {
+    id: 'media-11',
+    title: 'Avukat Mesleki Portre - Erkek',
+    url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    category: 'Ekip',
+    size: '910 KB',
+    uploadedAt: '2026-03-09'
+  },
+  {
+    id: 'media-12',
+    title: 'Avukat Mesleki Portre - Kadın',
+    url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+    category: 'Ekip',
+    size: '890 KB',
+    uploadedAt: '2026-03-09'
+  }
+];
+

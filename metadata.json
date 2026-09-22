@@ -1,0 +1,6 @@
+{
+  "name": "KIR HUKUK",
+  "description": "KIR HUKUK - Prestijli, modern ve güvenilir kurumsal hukuk bürosu web sitesi ve kapsamlı CMS yönetim paneli.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,91 @@
+{
+  "entities": {
+    "Message": {
+      "title": "Message",
+      "description": "Contact form submissions and appointment requests",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Sender full name",
+          "maxLength": 150
+        },
+        "phone": {
+          "type": "string",
+          "description": "Contact phone number",
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "description": "Contact email address",
+          "maxLength": 150
+        },
+        "subject": {
+          "type": "string",
+          "description": "Subject or title of consultation request",
+          "maxLength": 200
+        },
+        "message": {
+          "type": "string",
+          "description": "Detailed inquiry or message content",
+          "maxLength": 5000
+        },
+        "practiceArea": {
+          "type": "string",
+          "description": "Selected practice area or legal domain",
+          "maxLength": 100
+        },
+        "appointmentDate": {
+          "type": "string",
+          "description": "Optional selected appointment date",
+          "maxLength": 50
+        },
+        "appointmentTime": {
+          "type": "string",
+          "description": "Optional selected appointment time slot",
+          "maxLength": 50
+        },
+        "meetingType": {
+          "type": "string",
+          "description": "in_person or online meeting preference",
+          "maxLength": 50
+        },
+        "type": {
+          "type": "string",
+          "description": "Message category: contact or appointment",
+          "maxLength": 50
+        },
+        "status": {
+          "type": "string",
+          "description": "Status: new, replied, in_progress, archived",
+          "maxLength": 50
+        },
+        "kvkkConsent": {
+          "type": "boolean",
+          "description": "Whether the user accepted the KVKK privacy statement"
+        },
+        "source": {
+          "type": "string",
+          "description": "Page or form source where submission occurred",
+          "maxLength": 200
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation"
+        },
+        "createdAtFormatted": {
+          "type": "string",
+          "description": "Human readable date formatted string",
+          "maxLength": 100
+        }
+      },
+      "required": ["name", "message"]
+    }
+  },
+  "firestore": {
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Stores user messages, consultation and appointment inquiries submitted from public forms"
+    }
+  }
+}

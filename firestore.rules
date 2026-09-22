@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // İletişim & Randevu Mesajları
+    // Web sitesi ziyaretçileri mesaj oluşturabilir.
+    // Yönetim paneli (masaüstü & mobil) mesajları listeleyebilir, durumunu güncelleyebilir ve silebilir.
+    match /messages/{messageId} {
+      allow create: if request.resource.data.name is string;
+      allow read, update, delete: if true;
+    }
+
+    // Site Genel Ayarları, Tema ve Görünüm
+    match /settings/{docId} {
+      allow read, write: if true;
+    }
+
+    // Menüler
+    match /menus/{menuId} {
+      allow read, write: if true;
+    }
+
+    // Özel Sayfalar
+    match /pages/{pageId} {
+      allow read, write: if true;
+    }
+
+    // Çalışma Alanları
+    match /practice_areas/{areaId} {
+      allow read, write: if true;
+    }
+
+    // Ekip Üyeleri (Avukatlar ve Personel)
+    match /team/{memberId} {
+      allow read, write: if true;
+    }
+
+    // Makaleler & Hukuki Yazılar
+    match /articles/{articleId} {
+      allow read, write: if true;
+    }
+
+    // Duyurular & Basın Bildirileri
+    match /announcements/{annId} {
+      allow read, write: if true;
+    }
+
+    // Sıkça Sorulan Sorular (SSS)
+    match /faq/{faqId} {
+      allow read, write: if true;
+    }
+
+    // Galeri / Fotoğraflar
+    match /gallery/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Ana Sayfa Bölüm Yapılandırması
+    match /home_sections/{sectionId} {
+      allow read, write: if true;
+    }
+
+    // CMS Senkronizasyon Veri Havuzu (Tüm cihazlar arası anlık tam senkronizasyon)
+    match /cms_sync/{docId} {
+      allow read, write: if true;
+    }
+
+    // Denetim Günlükleri (Audit Logs)
+    match /audit_logs/{logId} {
+      allow read, create: if true;
+      allow update, delete: if false;
+    }
+
+    // Kullanıcılar
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+  }
+}
